@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flame/components.dart';
-import 'package:flame/experimental.dart';
+import 'package:flame/events.dart';
 
 import '../../constants/constants.dart';
 
@@ -26,8 +26,8 @@ class MyTextButton extends TextBoxComponent with TapCallbacks {
   }
 
   @override
-  void render(Canvas c) {
-    renderMyTextButton(c);
-    super.render(c);
+  void render(Canvas canvas) {
+    renderMyTextButton(canvas);
+    super.render(canvas);
   }
 }

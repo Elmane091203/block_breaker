@@ -1,8 +1,9 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/experimental.dart';
+import 'package:flame/events.dart';
 
 import '../../constants/constants.dart';
 
@@ -16,7 +17,7 @@ class Paddle extends RectangleComponent with CollisionCallbacks, DragCallbacks {
   final void Function(DragUpdateEvent event) draggingPaddle;
 
   @override
-  Future<void>? onLoad() {
+  FutureOr<void>? onLoad() {
     final paddleHitbox = RectangleHitbox(
       size: size,
     );

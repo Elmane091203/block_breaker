@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flame/collisions.dart';
-import 'package:flame/experimental.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
 import '../constants/constants.dart';
@@ -13,7 +13,7 @@ import 'component/my_text_button.dart';
 import 'component/paddle.dart';
 
 class BlockBreaker extends FlameGame
-    with HasCollisionDetection, HasDraggableComponents, HasTappableComponents {
+    with HasCollisionDetection, DragCallbacks, TapCallbacks {
   int failedCount = kGameTryCount;
 
   bool get isCleared => children.whereType<Block>().isEmpty;
@@ -122,7 +122,7 @@ class BlockBreaker extends FlameGame
   void draggingPaddle(DragUpdateEvent event) {
     final paddle = children.whereType<Paddle>().first;
 
-    paddle.position.x += event.delta.x;
+    paddle.position.x += event.localDelta.x;
 
     if (paddle.position.x < 0) {
       paddle.position.x = 0;
